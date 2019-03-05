@@ -1,2 +1,2 @@
 # DjangoTut
-#testcommi
+#testcommit
