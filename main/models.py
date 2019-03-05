@@ -1,6 +1,5 @@
 from datetime import datetime
 from django.db import models
-from tinymce import TinyMCE
 
 # Create your models here.
 class Tutorial(models.Model):
@@ -10,9 +9,3 @@ class Tutorial(models.Model):
 
     def __str__(self):
         return self.tutorial_title
-
-
-
-
-
-
