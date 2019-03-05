@@ -1,0 +1,25 @@
+{% load static %}
+<head>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel ="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript for Materialize CSS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+{% for tut in tutorials %}
+<p>
+{{tut.tutorial_title}}
+:</p>
+<p>
+{{tut.tutorial_published}}
+</p>
+<p>
+{{tut.tutorial_content|safe}}
+</p>
+<hr>
+{% endfor %}
+
+<span class="token keyword">def</span>
+<script src ="{% static 'tinymce/js/prism.js' %}">
