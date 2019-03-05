@@ -1,7 +1,7 @@
-from django.contrib import admin
-from .models import Tutorial
 from tinymce.widgets import TinyMCE
+from django.contrib import admin
 from django.db import models
+from .models import Tutorial
 # Register your models here.
 
 class TutorialAdmin(admin.ModelAdmin):

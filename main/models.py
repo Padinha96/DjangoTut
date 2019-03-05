@@ -14,5 +14,3 @@ class Tutorial(models.Model):
     formfield_overrides = {
         models.TextField: {'widget' : TinyMCE()}
     }
-
-
