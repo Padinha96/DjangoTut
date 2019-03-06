@@ -1,0 +1,26 @@
+{% load static %}
+<head>
+    <link href="{% static 'tinymce/css/prism.css' %}" rel ="stylesheet">
+    <link href="{% static 'main/css/mystyle.css' %}" rel ="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript for Materialize CSS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+<nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo right">Django Tut</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="">Snippets</a></li>
+            <li><a href="/admin">Admin</a></li>
+          </ul>
+        </div>
+      </nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+<script src ="{% static 'tinymce/js/prism.js' %}"></script>
