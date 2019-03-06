@@ -13,5 +13,7 @@ def homepage(request):
 
 
 def register(request):
-    form = UserCreationForm()
-    return render(request, "main/register.html", context={"forms":form})
+    form = UserCreationForm
+    return render(request,
+                  "main/register.html",
+                  context={"form":form})
