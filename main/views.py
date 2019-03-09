@@ -4,15 +4,35 @@ from django.utils import translation
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from .models import Tutorial
+from .models import Tutorial, TutorialCategory, TutorialSeries
 from .forms import NewUserForm
+
+def single_slugger(request, single_slug):
+    categories = [c.slug for c in TutorialCategory.objects.all()]
+    if single_slug in categories:
+        matching_series = TutorialSeries.objects.filter(category__slug=single_slug)
+        series_url = {}
+        for match in matching_series.all():
+            part_one = Tutorial.objects.filter(series__series=match.series).earliest("published")
+            series_url[match] = part_one.slug
+        return render(request,
+                      "main/category.html",
+                      {"part_ones": series_url})
+    tutorials = [c.slug for c in Tutorial.objects.all()]
+    if single_slug in tutorials:
+        tut = Tutorial.objects.get(slug=single_slug)
+        serie_tuts = Tutorial.objects.filter(series__series=tut.series).order_by("published")
+        tut_idx = list(serie_tuts).index(tut)
+        return render(request,
+                      "main/tutorial.html",
+                      {"tutorial":tut, "sidebar":serie_tuts, "index":tut_idx})
 
 # Create your views here.
 def homepage(request):
     translation.activate('en')
     return render(request=request,
-                  template_name="main/home.html",
-                  context={"tutorials": Tutorial.objects.all}
+                  template_name="main/categories.html",
+                  context={"categories": TutorialCategory.objects.all}
                   )
 
 
